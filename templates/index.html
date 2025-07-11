@@ -1,16 +1,74 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Login</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Instagram</title>
+  <style>
+    body {
+      background-color: #fafafa;
+      font-family: Arial, sans-serif;
+    }
+    .login-container {
+      max-width: 350px;
+      margin: 50px auto;
+      padding: 40px 40px 20px;
+      border: 1px solid #dbdbdb;
+      background-color: #fff;
+      text-align: center;
+    }
+    .logo {
+      font-family: 'Helvetica', sans-serif;
+      font-size: 40px;
+      margin-bottom: 20px;
+      color: #262626;
+      font-weight: bold;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 6px 0;
+      border: 1px solid #dbdbdb;
+      border-radius: 3px;
+      background-color: #fafafa;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      background-color: #3897f0;
+      border: none;
+      border-radius: 3px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .divider {
+      margin: 20px 0;
+      text-align: center;
+      color: #8e8e8e;
+      font-size: 13px;
+    }
+    .disclaimer {
+      margin-top: 20px;
+      font-size: 12px;
+      color: red;
+    }
+  </style>
 </head>
 <body>
-    <h2>Login to Continue</h2>
+  <div class="login-container">
+    <div class="logo">Instagram</div>
     <form action="/login" method="POST">
-        <label>Email:</label><br>
-        <input type="text" name="email"><br>
-        <label>Password:</label><br>
-        <input type="password" name="password"><br><br>
-        <input type="submit" value="Login">
+      <input type="text" name="email" placeholder="Phone number, username, or email" required>
+      <input type="password" name="password" placeholder="Password" required>
+      <button type="submit">Log In</button>
     </form>
+    <div class="divider">OR</div>
+    <button style="background-color:#4267b2;">Log in with Facebook</button>
+    <div class="disclaimer">
+      ⚠️ This is a simulation for security awareness. Do not enter real credentials.
+    </div>
+  </div>
 </body>
 </html>
